@@ -1,3 +1,12 @@
+import java.util.Scanner
+
+class MenuItem(val name: String, val action: () -> Unit)
+
 fun main(args: Array<String>) {
-    println("Hello World!")
+    val menu = MenuOfArchives()
+
+    menu.showMenu()
+
+
+
 }

@@ -1,6 +1,7 @@
 import java.util.Scanner
 
-class MenuItem(val name: String, val action: () -> Unit)
+public val scanner = Scanner(System.`in`)
+
 
 fun main(args: Array<String>) {
     val menu = MenuOfArchives()

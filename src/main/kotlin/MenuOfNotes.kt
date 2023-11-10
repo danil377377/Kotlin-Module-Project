@@ -6,6 +6,7 @@ class MenuOfNotes(superMenu: MenuOfArchives) {
     val arrayOfItems = mutableListOf<MenuItem>(firstItem, lastItem )
     val menu = Menu("Список заметок", arrayOfItems)
 
+    val arrayToAdd = mutableListOf<MenuItem>()
 
 
 
@@ -16,11 +17,9 @@ class MenuOfNotes(superMenu: MenuOfArchives) {
         println("Введите текст заметки")
         val text = menu.inputName()
         val item = MenuItem(name) { println("Текст заметки \"$name\" : $text");showMenu() }
-        arrayOfItems.add(item)
-        val transfer = item
-        arrayOfItems[arrayOfItems.indexOf(item)] = lastItem
-        arrayOfItems[arrayOfItems.indexOf(lastItem)] = transfer
-
+        arrayToAdd.add(item)
+        arrayOfItems.clear()
+        arrayOfItems.addAll(arrayOf(firstItem, *arrayToAdd.toTypedArray(), lastItem))
         showMenu()
     }
 

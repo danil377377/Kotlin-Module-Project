@@ -1,14 +1,13 @@
 import java.util.*
 
 class MenuOfArchives() {
-    val lastItem = MenuItem("Выход") { println("exit"); System.exit(0)}
+    val lastItem = MenuItem("Выход") { println("exit"); System.exit(0) }
     val firstItem = MenuItem("Создать архив") { addItem() }
-    val arrayOfItems = mutableListOf<MenuItem>(firstItem, lastItem )
+    val arrayOfItems = mutableListOf<MenuItem>(firstItem, lastItem)
+    val arrayToAdd = mutableListOf<MenuItem>()
 
 
     val menu = Menu("Список архивов", arrayOfItems)
-
-
 
 
     fun addItem() {
@@ -16,11 +15,14 @@ class MenuOfArchives() {
         val name = menu.inputName()
         val menuOfNotes = MenuOfNotes(this)
         val item = MenuItem(name) { menuOfNotes.showMenu() }
-        arrayOfItems.add(item)
+        arrayToAdd.add(item)
+        arrayOfItems.clear()
+        arrayOfItems.addAll(arrayOf(firstItem, *arrayToAdd.toTypedArray(), lastItem))
 
-        val transfer = item
-        arrayOfItems[arrayOfItems.indexOf(item)] = lastItem
-        arrayOfItems[arrayOfItems.indexOf(lastItem)] = transfer
+
+
+
+
 
 
         showMenu()

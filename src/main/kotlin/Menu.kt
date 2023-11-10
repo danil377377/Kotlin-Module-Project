@@ -9,11 +9,11 @@ class Menu(val nameMenu: String,val arrayOfItems : MutableList<MenuItem>) {
         input()
     }
     fun inputName(): String{
-        var name = Scanner(System.`in`).nextLine()
+        var name = scanner.nextLine()
         while(true){
             if(name == ""){
                 println("Вы ничего не ввели")
-            name = Scanner(System.`in`).nextLine()
+            name = scanner.nextLine()
             }
             else break
         }
@@ -21,9 +21,8 @@ class Menu(val nameMenu: String,val arrayOfItems : MutableList<MenuItem>) {
     }
     fun input(){
         while (true) {
-            val scanner = Scanner(System.`in`)
-            val input = scanner.nextLine()
-            if (input.toIntOrNull() == null) {
+            val input = scanner.nextLine().toIntOrNull()
+            if (input == null) {
                 println("Нужно ввести номер пункта")
                 continue
             } else if (input.toInt() >= 0 && input.toInt() +1  <= arrayOfItems.size) {

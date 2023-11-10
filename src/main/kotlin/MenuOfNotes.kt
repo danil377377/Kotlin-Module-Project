@@ -3,10 +3,11 @@ import java.util.Scanner
 class MenuOfNotes(superMenu: MenuOfArchives) {
     val lastItem = MenuItem("Назад") { superMenu.showMenu() }
     val firstItem = MenuItem("Создать заметку") { addItem() }
-    val arrayOfItems = mutableListOf<MenuItem>(firstItem, lastItem )
-    val menu = Menu("Список заметок", arrayOfItems)
+    val abs = AbstractMenuItem(lastItem, firstItem)
+    val menu = Menu("Список заметок", abs.arrayOfItems)
 
-    val arrayToAdd = mutableListOf<MenuItem>()
+
+
 
 
 
@@ -17,9 +18,7 @@ class MenuOfNotes(superMenu: MenuOfArchives) {
         println("Введите текст заметки")
         val text = menu.inputName()
         val item = MenuItem(name) { println("Текст заметки \"$name\" : $text");showMenu() }
-        arrayToAdd.add(item)
-        arrayOfItems.clear()
-        arrayOfItems.addAll(arrayOf(firstItem, *arrayToAdd.toTypedArray(), lastItem))
+        abs.addItem(item)
         showMenu()
     }
 

@@ -1,3 +1,13 @@
+import java.util.Scanner
+
+public val scanner = Scanner(System.`in`)
+
+
 fun main(args: Array<String>) {
-    println("Hello World!")
+    val menu = MenuOfArchives()
+
+    menu.showMenu()
+
+
+
 }
